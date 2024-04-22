@@ -1,0 +1,41 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://34.64.168.32:3306/imap_db?serverTimezone=Asia/Seoul
+    username: dev_user
+    password: zxcv1234
+  jpa:
+    database: default
+    database-platform: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          batch_size: 10
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+  error:
+    path: /error/error.ftl
+    include-stacktrace: always
+    whitelabel:
+      enabled: true
+  undertow:
+    threads:
+      io: 16
+      worker: 256
+    buffer-size: 1024
+    direct-buffers: true
+    accesslog:
+      dir: ./logs
+      enabled: true
+      pattern: "%t  %a %r %s (%D ms)" #Format pattern for access logs.
+      prefix: access_log. # Log file name prefix
+      suffix: log #log file name suffix

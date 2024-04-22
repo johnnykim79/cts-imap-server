@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: false
+  mvc:
+    contentnegotiation:
+      favor-parameter: true
+      media-types:
+        xls: application/vnd.ms-excel
+    converters:
+      preferred-json-mapper: gson
+  web:
+    locale: ko_KR
+    resources:
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html; charset=utf-8
+    cache: false
+    prefix: classpath:/templates/
+  devtools:
+    livereload:
+      enabled: true
+    remote:
+      restart:
+        enabled: true
